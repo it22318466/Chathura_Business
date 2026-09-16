@@ -9968,7 +9968,7 @@
             overflow: visible;
             padding: 0;
             position: relative;
-            width: 1200px
+            width: 1300px
         }
 
         .framer-QTUgr .framer-methcr {
@@ -9978,13 +9978,13 @@
             flex: none;
             flex-direction: row;
             flex-wrap: nowrap;
-            gap: 0px;
+            gap: 1px;
             height: 300px;
             justify-content: center;
             overflow: visible;
-            padding: 0 8px 0 0;
+            padding: 0 8.5px 0 0.5px;
             position: relative;
-            width: 1050px;
+            width: 1000px;
             z-index: 1
         }
 
@@ -10112,6 +10112,36 @@
             top: 47%;
             width: min-content;
             z-index: 1
+        }
+
+        #services .framer-methcr .framer-1vnn4vb,
+        #services .framer-methcr .framer-2ln70f,
+        #services .framer-methcr .framer-1pj3r4x,
+        #services .framer-methcr .framer-j292b1,
+        #services .framer-methcr .framer-9wppfw,
+        #services .framer-methcr .framer-mae6m3 {
+            left: 0;
+            top: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%) !important;
+        }
+
+        #services .framer-methcr .framer-1vnn4vb { left: 8.5% !important; }
+        #services .framer-methcr .framer-2ln70f { left: 25.1% !important; }
+        #services .framer-methcr .framer-1pj3r4x { left: 41.7% !important; }
+        #services .framer-methcr .framer-j292b1 { left: 58.3% !important; }
+        #services .framer-methcr .framer-9wppfw { left: 74.9% !important; }
+        #services .framer-methcr .framer-mae6m3 { left: 91.5% !important; }
+
+        #services .framer-methcr .framer-QqaUq,
+        #services .framer-methcr .framer-whPBP,
+        #services .framer-methcr .framer-d9JbG,
+        #services .framer-methcr .framer-PEIT5,
+        #services .framer-methcr .framer-YbN6I,
+        #services .framer-methcr .framer-NyRPY {
+            width: 200px !important;
+            height: 200px !important;
         }
 
         .framer-QTUgr .framer-gfr4ym,
@@ -28729,6 +28759,12 @@
                 "yMdNISC82mPF4WrxC2WO1dono0.webp": "Hero_Section/Deligence_Design-Mobile.webp",
                 "04TNTFEgUq6Y4GLxxTzc3BiQdM0.webp": "Hero_Section/Cineart-Desktop.webp",
                 "XWIPuU0BfBpJRboOUOotN47j5g.webp": "Hero_Section/Cineart-Mobile.webp",
+                "cpHsRx4HLz9hWw00cL8UlPfTCI.webp": "Our_Services/Branding.webp",
+                "oPknHbzEWo0E4aEfvNfRtCBHZzY.webp": "Our_Services/Web.webp",
+                "8X9ZDVRkhA7I479T6ifO1Y8aA.webp": "Our_Services/SEO.webp",
+                "wISLw2pIqyxXqfQPD8qf4AmDSB8.webp": "Our_Services/Strategic_Marketing.webp",
+                "OI6QeFq8gzpOXui360gYEHAp0.webp": "Our_Services/Digital_Marketing.webp",
+                "gp18ZnR7O4VKKx4kOP4VBeyZxIc.webp": "Our_Services/Visual_Production.webp",
                 "tkllD3uRKGa0zxnTCtfXsjyvOQ0.webp": "Projects_Images/Wheels-Lanka.png",
                 "99Gv4ExWkbidpGaqPBhKkkdttE.webp": "Projects_Images/Turf-Colombo.png",
                 "494W0IYFVyiTGONt70U4FKChTc.webp": "Projects_Images/The-Arch-Lab (1).png",
@@ -28763,6 +28799,62 @@
                     Object.entries(textMap).forEach(([oldText, newText]) => {
                         if (node.nodeValue.includes(oldText)) node.nodeValue = node.nodeValue.replaceAll(oldText, newText);
                     });
+                });
+
+                const serviceTitles = [
+                    "Branding",
+                    "Web Development",
+                    "SEO",
+                    "Strategic Marketing",
+                    "Digital Marketing",
+                    "Visual Production"
+                ];
+                document.querySelectorAll('#services [data-framer-name="Tooltip"] .framer-text').forEach((title, index) => {
+                    title.textContent = serviceTitles[index % serviceTitles.length];
+                });
+
+                document.querySelectorAll("#services .framer-methcr").forEach((track) => {
+                    const helpers = [
+                        ".framer-1vnn4vb",
+                        ".framer-2ln70f",
+                        ".framer-1pj3r4x",
+                        ".framer-j292b1",
+                        ".framer-9wppfw",
+                        ".framer-mae6m3"
+                    ];
+                    helpers.forEach((selector, index) => {
+                        const helper = track.querySelector(selector);
+                        if (!helper) return;
+                        const cardSize = 200;
+                        const cardGap = 10;
+                        const start = (track.clientWidth - (cardSize * helpers.length + cardGap * (helpers.length - 1))) / 2 + cardSize / 2;
+                        helper.style.setProperty("left", `${start + index * (cardSize + cardGap)}px`, "important");
+                        helper.style.setProperty("top", "50%", "important");
+                        helper.style.setProperty("width", "200px", "important");
+                        helper.style.setProperty("height", "200px", "important");
+                        helper.style.setProperty("transform", "translate(-50%, -50%)", "important");
+                        helper.querySelectorAll("img").forEach((image) => {
+                            image.style.setProperty("width", "200px", "important");
+                            image.style.setProperty("height", "200px", "important");
+                            image.style.setProperty("object-fit", "cover", "important");
+                            image.style.setProperty("transform", "none", "important");
+                            const renderedWidth = image.getBoundingClientRect().width;
+                            if (renderedWidth > 0) {
+                                image.dataset.serviceScale = String(200 / renderedWidth);
+                                image.style.setProperty("transform", `scale(${image.dataset.serviceScale})`, "important");
+                            }
+                        });
+                    });
+                    const normalizedImages = track.querySelectorAll("img");
+                    if (normalizedImages.length >= helpers.length) {
+                        const firstX = normalizedImages[0].getBoundingClientRect().x;
+                        normalizedImages.forEach((image, index) => {
+                            const currentX = image.getBoundingClientRect().x;
+                            const correction = firstX + index * 210 - currentX;
+                            const scale = Number(image.dataset.serviceScale || 1);
+                            image.style.setProperty("transform", `translateX(${correction / scale}px) scale(${scale})`, "important");
+                        });
+                    }
                 });
 
                 document.querySelectorAll("a[href]").forEach((link) => {
