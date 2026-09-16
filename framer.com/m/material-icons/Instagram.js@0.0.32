@@ -1,0 +1,8 @@
+/*
+ * Instagram (material-icons/Instagram@0.0.32)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/QUfcXR1WTIdnnjrIxmbL/rqsB4kePLDrU9HtVzww0/Instagram.js"
+export { default } from "https://framerusercontent.com/modules/QUfcXR1WTIdnnjrIxmbL/rqsB4kePLDrU9HtVzww0/Instagram.js"

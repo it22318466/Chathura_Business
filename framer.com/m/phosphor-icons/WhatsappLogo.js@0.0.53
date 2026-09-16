@@ -1,0 +1,8 @@
+/*
+ * WhatsappLogo (phosphor-icons/WhatsappLogo@0.0.53)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/VhRbCgXkAqtysDPeeUZv/NZ7Xh7n1edNwsYwSgGHC/WhatsappLogo.js"
+export { default } from "https://framerusercontent.com/modules/VhRbCgXkAqtysDPeeUZv/NZ7Xh7n1edNwsYwSgGHC/WhatsappLogo.js"

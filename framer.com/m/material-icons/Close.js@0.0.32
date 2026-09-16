@@ -1,0 +1,8 @@
+/*
+ * Close (material-icons/Close@0.0.32)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/vIR61hwTfbWMd7pIrXPi/c7ePVo5ujOb1rskSDnkP/Close.js"
+export { default } from "https://framerusercontent.com/modules/vIR61hwTfbWMd7pIrXPi/c7ePVo5ujOb1rskSDnkP/Close.js"

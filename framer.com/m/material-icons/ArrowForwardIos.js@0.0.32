@@ -1,0 +1,8 @@
+/*
+ * ArrowForwardIos (material-icons/ArrowForwardIos@0.0.32)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/GfS63iBaO0v9vfCrJ6pc/iWraoGjA3YGcmAUe2ML6/ArrowForwardIos.js"
+export { default } from "https://framerusercontent.com/modules/GfS63iBaO0v9vfCrJ6pc/iWraoGjA3YGcmAUe2ML6/ArrowForwardIos.js"

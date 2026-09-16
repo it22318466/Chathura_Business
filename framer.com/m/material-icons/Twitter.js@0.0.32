@@ -1,0 +1,8 @@
+/*
+ * Twitter (material-icons/Twitter@0.0.32)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/vI2sh8u7pRDewOc5b0vq/udkfnLgjXVlIc2Pxig65/Twitter.js"
+export { default } from "https://framerusercontent.com/modules/vI2sh8u7pRDewOc5b0vq/udkfnLgjXVlIc2Pxig65/Twitter.js"

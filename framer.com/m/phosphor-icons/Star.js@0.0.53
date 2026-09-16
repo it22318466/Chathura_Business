@@ -1,0 +1,8 @@
+/*
+ * Star (phosphor-icons/Star@0.0.53)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/0d6gYUal6P0KhcGqNsjI/6TkT49XB8TLWksXTyGEY/Star.js"
+export { default } from "https://framerusercontent.com/modules/0d6gYUal6P0KhcGqNsjI/6TkT49XB8TLWksXTyGEY/Star.js"

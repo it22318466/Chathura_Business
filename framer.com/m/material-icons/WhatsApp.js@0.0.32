@@ -1,0 +1,8 @@
+/*
+ * WhatsApp (material-icons/WhatsApp@0.0.32)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/9KVjKdSRLGXDjiipOFat/0gwCHccGWsM2o2asd8wS/WhatsApp.js"
+export { default } from "https://framerusercontent.com/modules/9KVjKdSRLGXDjiipOFat/0gwCHccGWsM2o2asd8wS/WhatsApp.js"

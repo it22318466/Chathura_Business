@@ -1,0 +1,8 @@
+/*
+ * Facebook (material-icons/Facebook@0.0.32)
+ *
+ * Learn More: https://www.framer.com/asset-urls
+ */
+
+export * from "https://framerusercontent.com/modules/g713NjwYuj7H819nSeEn/Q5czXFfs7ajLJbp3yex6/Facebook.js"
+export { default } from "https://framerusercontent.com/modules/g713NjwYuj7H819nSeEn/Q5czXFfs7ajLJbp3yex6/Facebook.js"
