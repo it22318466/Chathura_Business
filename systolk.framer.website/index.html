@@ -28862,58 +28862,81 @@
                 "Turf Colombo": "https://turfcolombo.infinityfreeapp.com/?i=1",
                 "The Arch Lab": "https://archlab.lk/",
                 "Technology Plus": "https://technologyplus.infinityfreeapp.com/?i=1",
-                "Cinearts": "https://www.cinearts.infinityfreeapp.com/?i=1"
+                "Cinearts": "https://www.cinearts.infinityfreeapp.com/?i=1",
+                "Grand Engineering": "#"
             };
 
             function applyProjectLinks() {
+                const referenceArrow = Array.from(document.querySelectorAll("#projects .framer-g2epod-container"))
+                    .find((candidate) => candidate.querySelector("svg"));
+
                 document.querySelectorAll("#projects [id]").forEach((card) => {
                     const titleNode = Array.from(card.querySelectorAll("p.framer-text")).find((paragraph) => paragraph.textContent.trim());
                     const title = titleNode ? titleNode.textContent.trim() : "";
-                    const url = projectUrlMap[title];
-                    const link = card.querySelector('a[href]');
+                    const url = projectUrlMap[title] || "#";
+                    const link = card.querySelector('a[href]') || card.querySelector('a');
                     if (!link) return;
 
-                    const arrow = link.querySelector(".framer-g2epod-container");
-                    if (arrow) {
-                        const isMobile = !!card.querySelector(".framer-v-qehvc8, .framer-v-10xsqvb") || window.innerWidth <= 900;
-                        arrow.style.setProperty("left", isMobile ? "18px" : "18px", "important");
-                        arrow.style.setProperty("top", "50%", "important");
+                    let arrow = link.querySelector(".framer-g2epod-container");
+                    if (!arrow) {
+                        arrow = document.createElement("div");
+                        arrow.className = "framer-g2epod-container";
+                        link.insertBefore(arrow, link.firstChild);
                     }
+
+                    if (!arrow.querySelector("svg") && referenceArrow) {
+                        const renderedArrow = referenceArrow.cloneNode(true);
+                        arrow.replaceWith(renderedArrow);
+                        arrow = renderedArrow;
+                    }
+
+                    const isMobile = !!card.querySelector(".framer-v-qehvc8, .framer-v-10xsqvb") || window.innerWidth <= 900;
+                    arrow.style.setProperty("left", isMobile ? "18px" : "18px", "important");
+                    arrow.style.setProperty("top", "50%", "important");
+                    arrow.style.setProperty("display", "block", "important");
+                    arrow.style.setProperty("opacity", "1", "important");
+                    arrow.style.setProperty("visibility", "visible", "important");
 
                     link.style.setProperty("justify-content", "flex-start", "important");
                     link.style.setProperty("padding-left", "50px", "important");
                     link.style.setProperty("padding-right", "0px", "important");
                     link.style.setProperty("width", "303px", "important");
 
-                    if (!url) {
-                        link.removeAttribute("href");
-                        link.style.pointerEvents = "none";
+                    if (!url || url === "#") {
+                        link.href = "#";
+                        link.style.pointerEvents = "auto";
                         link.setAttribute("aria-disabled", "true");
-                        return;
+                    } else {
+                        link.href = url;
+                        link.target = "_blank";
+                        link.rel = "noopener";
+                        link.style.pointerEvents = "auto";
+                        link.removeAttribute("aria-disabled");
                     }
 
-                    link.href = url;
-                    link.target = "_blank";
-                    link.rel = "noopener";
-                    link.style.pointerEvents = "auto";
-                    link.removeAttribute("aria-disabled");
-
-                    const textElement = link.querySelector(".framer-text");
-                    if (textElement) {
-                        try {
-                            const host = new URL(url).hostname.replace(/^www\./, "");
-                            textElement.textContent = host;
-                        } catch (error) {
-                            textElement.textContent = url;
-                        }
-
-                        textElement.style.setProperty("font-size", "14px", "important");
-                        textElement.style.setProperty("line-height", "1.2", "important");
-                        textElement.style.setProperty("letter-spacing", "0", "important");
-                        textElement.style.setProperty("margin-left", "0px", "important");
+                    let textElement = link.querySelector(".framer-text");
+                    if (!textElement) {
+                        textElement = document.createElement("div");
+                        textElement.className = "framer-16dq2b3 framer-text";
+                        textElement.style.setProperty("display", "flex", "important");
                         textElement.style.setProperty("position", "relative", "important");
                         textElement.style.setProperty("left", "0px", "important");
+                        link.appendChild(textElement);
                     }
+
+                    try {
+                        const host = new URL(url === "#" ? "https://example.com" : url).hostname.replace(/^www\./, "");
+                        textElement.textContent = host;
+                    } catch (error) {
+                        textElement.textContent = url === "#" ? "Website" : url;
+                    }
+
+                    textElement.style.setProperty("font-size", "14px", "important");
+                    textElement.style.setProperty("line-height", "1.2", "important");
+                    textElement.style.setProperty("letter-spacing", "0", "important");
+                    textElement.style.setProperty("margin-left", "0px", "important");
+                    textElement.style.setProperty("position", "relative", "important");
+                    textElement.style.setProperty("left", "0px", "important");
                 });
             }
 
