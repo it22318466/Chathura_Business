@@ -28822,6 +28822,101 @@
                 });
             }
 
+            function applyAdditionalWorks() {
+                const projects = document.querySelector("#projects");
+                if (!projects || projects.querySelector("#project5")) return;
+
+                const template = projects.querySelector("#project4");
+                if (!template) return;
+
+                const projectConfigs = [
+                    { id: "project5", title: "Cinearts", image: "chathura-images/Projects_Images/Cinearts.png" },
+                    { id: "project6", title: "Grand Engineering", image: "chathura-images/Projects_Images/Grandengineeringsl.jpg" }
+                ];
+
+                projectConfigs.forEach(({ id, title, image }) => {
+                    const clone = template.cloneNode(true);
+                    clone.id = id;
+                    clone.querySelectorAll("[id]").forEach((element) => element.removeAttribute("id"));
+                    clone.querySelectorAll("p").forEach((paragraph) => {
+                        if (paragraph.textContent.trim() === "Blanche" || paragraph.textContent.trim() === "Technology Plus") paragraph.textContent = title;
+                    });
+                    clone.querySelectorAll("img").forEach((projectImage) => {
+                        const source = projectImage.getAttribute("src") || "";
+                        if (source.includes("MkrnTkSZox2nDlJzFpLA5OMVjbU.webp") || source.includes("technologyplus.jpg")) {
+                            projectImage.src = image;
+                            projectImage.srcset = image;
+                        }
+                    });
+                    projects.appendChild(clone);
+                });
+
+                requestAnimationFrame(() => {
+                    const stackHeight = Math.max(...[...projects.children].map((card) => card.offsetTop + card.offsetHeight));
+                    projects.style.minHeight = `${stackHeight}px`;
+                });
+            }
+
+            const projectUrlMap = {
+                "Wheels Lanka": "https://wheelslanka.infinityfreeapp.com/?i=1",
+                "Turf Colombo": "https://turfcolombo.infinityfreeapp.com/?i=1",
+                "The Arch Lab": "https://archlab.lk/",
+                "Technology Plus": "https://technologyplus.infinityfreeapp.com/?i=1",
+                "Cinearts": "https://www.cinearts.infinityfreeapp.com/?i=1"
+            };
+
+            function applyProjectLinks() {
+                document.querySelectorAll("#projects [id]").forEach((card) => {
+                    const titleNode = Array.from(card.querySelectorAll("p.framer-text")).find((paragraph) => paragraph.textContent.trim());
+                    const title = titleNode ? titleNode.textContent.trim() : "";
+                    const url = projectUrlMap[title];
+                    const link = card.querySelector('a[href]');
+                    if (!link) return;
+
+                    const arrow = link.querySelector(".framer-g2epod-container");
+                    if (arrow) {
+                        const isMobile = !!card.querySelector(".framer-v-qehvc8, .framer-v-10xsqvb") || window.innerWidth <= 900;
+                        arrow.style.setProperty("left", isMobile ? "18px" : "18px", "important");
+                        arrow.style.setProperty("top", "50%", "important");
+                    }
+
+                    link.style.setProperty("justify-content", "flex-start", "important");
+                    link.style.setProperty("padding-left", "50px", "important");
+                    link.style.setProperty("padding-right", "0px", "important");
+                    link.style.setProperty("width", "303px", "important");
+
+                    if (!url) {
+                        link.removeAttribute("href");
+                        link.style.pointerEvents = "none";
+                        link.setAttribute("aria-disabled", "true");
+                        return;
+                    }
+
+                    link.href = url;
+                    link.target = "_blank";
+                    link.rel = "noopener";
+                    link.style.pointerEvents = "auto";
+                    link.removeAttribute("aria-disabled");
+
+                    const textElement = link.querySelector(".framer-text");
+                    if (textElement) {
+                        try {
+                            const host = new URL(url).hostname.replace(/^www\./, "");
+                            textElement.textContent = host;
+                        } catch (error) {
+                            textElement.textContent = url;
+                        }
+
+                        textElement.style.setProperty("font-size", "14px", "important");
+                        textElement.style.setProperty("line-height", "1.2", "important");
+                        textElement.style.setProperty("letter-spacing", "0", "important");
+                        textElement.style.setProperty("margin-left", "0px", "important");
+                        textElement.style.setProperty("position", "relative", "important");
+                        textElement.style.setProperty("left", "0px", "important");
+                    }
+                });
+            }
+
             function applyAssets() {
                 document.title = "Chathura Manilka | Portfolio";
                 document.querySelectorAll("img").forEach((image) => {
@@ -28844,6 +28939,8 @@
 
                 applyAboutCopy();
                 applyHeroHeadline();
+                applyAdditionalWorks();
+                applyProjectLinks();
 
                 const serviceTitles = [
                     "Branding",
